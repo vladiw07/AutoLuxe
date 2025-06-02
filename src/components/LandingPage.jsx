@@ -24,6 +24,8 @@ const LandingPage = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    // Reset any open dropdown when toggling the menu
+    setActiveDropdown(null);
     // Prevent scrolling when menu is open
     if (!isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -196,6 +198,7 @@ const LandingPage = () => {
                         key={index} 
                         href={option.link} 
                         className="block py-2 text-gray-300 hover:text-white text-[18px]"
+                        onClick={() => setActiveDropdown(null)}
                       >
                         {option.name}
                       </a>
@@ -219,6 +222,7 @@ const LandingPage = () => {
                         key={index} 
                         href={option.link} 
                         className="block py-2 text-gray-300 hover:text-white text-[18px]"
+                        onClick={() => setActiveDropdown(null)}
                       >
                         {option.name}
                       </a>
@@ -242,6 +246,7 @@ const LandingPage = () => {
                         key={index} 
                         href={option.link} 
                         className="block py-2 text-gray-300 hover:text-white text-[18px]"
+                        onClick={() => setActiveDropdown(null)}
                       >
                         {option.name}
                       </a>
