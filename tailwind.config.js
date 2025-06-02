@@ -5,7 +5,11 @@ module.exports = {
     "./public/index.html"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        parkinsans: ['Parkinsans', 'sans-serif'], // Now you can use 'font-parkinsans' in your classes
+      },
+    },
   },
   plugins: [],
 }
