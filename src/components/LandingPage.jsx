@@ -5,6 +5,11 @@ import background from '../assets/images/backgroundCarImage.png';
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileDropdowns, setMobileDropdowns] = useState({
+    cars: false,
+    models: false,
+    prices: false
+  });
   
   const dropdownRef = useRef(null);
 
@@ -26,6 +31,12 @@ const LandingPage = () => {
     setIsMenuOpen(!isMenuOpen);
     // Reset any open dropdown when toggling the menu
     setActiveDropdown(null);
+    // Reset mobile dropdowns
+    setMobileDropdowns({
+      cars: false,
+      models: false,
+      prices: false
+    });
     // Prevent scrolling when menu is open
     if (!isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -40,6 +51,14 @@ const LandingPage = () => {
     } else {
       setActiveDropdown(dropdown);
     }
+  };
+
+  // New function to toggle mobile dropdowns
+  const toggleMobileDropdown = (dropdown) => {
+    setMobileDropdowns(prev => ({
+      ...prev,
+      [dropdown]: !prev[dropdown]
+    }));
   };
 
   // Dropdown content data
@@ -186,12 +205,12 @@ const LandingPage = () => {
               {/* Mobile Cars Dropdown */}
               <div className="border-b border-gray-700">
                 <button 
-                  onClick={() => toggleDropdown('mobile-cars')}
+                  onClick={() => toggleMobileDropdown('cars')}
                   className="hover:text-gray-300 py-3 w-full flex justify-between items-center"
                 >
-                  Cars <FiChevronDown className={`transition-transform duration-200 ${activeDropdown === 'mobile-cars' ? 'rotate-180' : ''}`} />
+                  Cars <FiChevronDown className={`transition-transform duration-200 ${mobileDropdowns.cars ? 'rotate-180' : ''}`} />
                 </button>
-                {activeDropdown === 'mobile-cars' && (
+                {mobileDropdowns.cars && (
                   <div className="pl-4 pb-3">
                     {dropdownOptions.cars.map((option, index) => (
                       <a 
@@ -209,12 +228,12 @@ const LandingPage = () => {
               {/* Mobile Models Dropdown */}
               <div className="border-b border-gray-700">
                 <button 
-                  onClick={() => toggleDropdown('mobile-models')}
+                  onClick={() => toggleMobileDropdown('models')}
                   className="hover:text-gray-300 py-3 w-full flex justify-between items-center"
                 >
-                  Models <FiChevronDown className={`transition-transform duration-200 ${activeDropdown === 'mobile-models' ? 'rotate-180' : ''}`} />
+                  Models <FiChevronDown className={`transition-transform duration-200 ${mobileDropdowns.models ? 'rotate-180' : ''}`} />
                 </button>
-                {activeDropdown === 'mobile-models' && (
+                {mobileDropdowns.models && (
                   <div className="pl-4 pb-3">
                     {dropdownOptions.models.map((option, index) => (
                       <a 
@@ -232,12 +251,12 @@ const LandingPage = () => {
               {/* Mobile Prices Dropdown */}
               <div className="border-b border-gray-700">
                 <button 
-                  onClick={() => toggleDropdown('mobile-prices')}
+                  onClick={() => toggleMobileDropdown('prices')}
                   className="hover:text-gray-300 py-3 w-full flex justify-between items-center"
                 >
-                  Prices <FiChevronDown className={`transition-transform duration-200 ${activeDropdown === 'mobile-prices' ? 'rotate-180' : ''}`} />
+                  Prices <FiChevronDown className={`transition-transform duration-200 ${mobileDropdowns.prices ? 'rotate-180' : ''}`} />
                 </button>
-                {activeDropdown === 'mobile-prices' && (
+                {mobileDropdowns.prices && (
                   <div className="pl-4 pb-3">
                     {dropdownOptions.prices.map((option, index) => (
                       <a 
