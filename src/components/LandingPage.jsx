@@ -198,7 +198,6 @@ const LandingPage = () => {
                         key={index} 
                         href={option.link} 
                         className="block py-2 text-gray-300 hover:text-white text-[18px]"
-                        onClick={() => setActiveDropdown(null)}
                       >
                         {option.name}
                       </a>
@@ -222,7 +221,6 @@ const LandingPage = () => {
                         key={index} 
                         href={option.link} 
                         className="block py-2 text-gray-300 hover:text-white text-[18px]"
-                        onClick={() => setActiveDropdown(null)}
                       >
                         {option.name}
                       </a>
@@ -246,7 +244,6 @@ const LandingPage = () => {
                         key={index} 
                         href={option.link} 
                         className="block py-2 text-gray-300 hover:text-white text-[18px]"
-                        onClick={() => setActiveDropdown(null)}
                       >
                         {option.name}
                       </a>
